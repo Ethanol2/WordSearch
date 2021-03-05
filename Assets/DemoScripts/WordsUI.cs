@@ -48,7 +48,6 @@ public class WordsUI : MonoBehaviour
             }
             if (Input.GetKeyDown("r"))
             {
-                Debug.ClearDeveloperConsole();
                 SceneManager.LoadScene(activeScene.name);
             }
         }
