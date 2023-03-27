@@ -27,9 +27,9 @@ public class GridGenerate : MonoBehaviour
     void Start()
     {
         // Sets all the words to be uppercase letters
-        wordsToUpper(ref wordsToUse);
+        WordsToUpper(ref wordsToUse);
         // Generates the grid
-        generateGrid();
+        GenerateGrid();
         // Saves the words actually used to the activeWords Words scriptable object
         SaveContainedWords();
     }
@@ -41,7 +41,7 @@ public class GridGenerate : MonoBehaviour
         if (Input.GetKeyDown("d"))
         {
             visibleWords = !visibleWords;
-            toggleWordDebug(visibleWords);
+            ToggleWordDebug(visibleWords);
         }
     }
 
@@ -117,17 +117,17 @@ public class GridGenerate : MonoBehaviour
                 // Vertical
                 if (direction == 0)
                 {
-                    success = fitWordVertical(word, startRange, backwards, ref startPos);
+                    success = FitWordVertical(word, startRange, backwards, ref startPos);
                 }
                 // Horizontal
                 else if (direction == 1)
                 {
-                    success = fitWordHorizontal(word, startRange, backwards, ref startPos);
+                    success = FitWordHorizontal(word, startRange, backwards, ref startPos);
                 }
                 // Diagonal
                 else if (direction == 2)
                 {
-                    success = fitWordDiagonal(word, ref diaDown, backwards, ref startPos);
+                    success = FitWordDiagonal(word, ref diaDown, backwards, ref startPos);
                 }
 
                 if (!success)
@@ -278,7 +278,7 @@ public class GridGenerate : MonoBehaviour
 
             for (int k = 0; k < word.Length; k++)
             {
-                if (checkFilled(new Vector2Int(startPos.x, startPos.y + k)))
+                if (CheckFilled(new Vector2Int(startPos.x, startPos.y + k)))
                 {
                     if (grid[startPos.x, startPos.y + k] != word[k] && !backwards)
                     {
@@ -313,7 +313,7 @@ public class GridGenerate : MonoBehaviour
 
             for (int k = 0; k < word.Length; k++)
             {
-                if (checkFilled(new Vector2Int(startPos.x + k, startPos.y)))
+                if (CheckFilled(new Vector2Int(startPos.x + k, startPos.y)))
                 {
                     if (grid[startPos.x + k, startPos.y] != word[k] && !backwards)
                     {
@@ -357,7 +357,7 @@ public class GridGenerate : MonoBehaviour
                     startPos.y = Random.Range(0, startRange);
                     for (int k = 0; k < word.Length; k++)
                     {
-                        if (checkFilled(new Vector2Int(startPos.x + k, startPos.y + k)))
+                        if (CheckFilled(new Vector2Int(startPos.x + k, startPos.y + k)))
                         {
                             if (grid[startPos.x + k, startPos.y + k] != word[k] && !backwards)
                             {
@@ -390,7 +390,7 @@ public class GridGenerate : MonoBehaviour
                     startPos.y = Random.Range(gridSize - startRange, gridSize);
                     for (int k = 0; k < word.Length; k++)
                     {
-                        if (checkFilled(new Vector2Int(startPos.x + k, startPos.y - k)))
+                        if (CheckFilled(new Vector2Int(startPos.x + k, startPos.y - k)))
                         {
                             if (grid[startPos.x + k, startPos.y - k] != word[k] && !backwards)
                             {
