@@ -54,7 +54,7 @@ public class GridGenerate : MonoBehaviour
         }
     }
 
-    void wordsToUpper(ref Words words)
+    void WordsToUpper(ref Words words)
     {
         for (int k = 0; k < words.words.Count; k++)
         {
@@ -70,7 +70,7 @@ public class GridGenerate : MonoBehaviour
         }
     }
 
-    void toggleWordDebug(bool enable)
+    void ToggleWordDebug(bool enable)
     {
         foreach (Transform t in this.transform)
         {
@@ -81,7 +81,7 @@ public class GridGenerate : MonoBehaviour
         }
     }
 
-    void generateGrid()
+    void GenerateGrid()
     {
         // Orders the words from longest to shortest
         List<string> words = wordsToUse.words;
@@ -259,13 +259,13 @@ public class GridGenerate : MonoBehaviour
         activeWords.name = wordsToUse.name;
     }
 
-    bool checkFilled(Vector2Int pos)
+    bool CheckFilled(Vector2Int pos)
     {
         if (grid[pos.x, pos.y] == '\0') return false;
         return true;
     }
 
-    bool fitWordVertical(string word, int startRange, bool backwards, ref Vector2Int startPos)
+    bool FitWordVertical(string word, int startRange, bool backwards, ref Vector2Int startPos)
     {
         int count = 0;
         bool safe;
@@ -300,7 +300,7 @@ public class GridGenerate : MonoBehaviour
         return true;
     }
 
-    bool fitWordHorizontal(string word, int startRange, bool backwards, ref Vector2Int startPos)
+    bool FitWordHorizontal(string word, int startRange, bool backwards, ref Vector2Int startPos)
     {
         int count = 0;
         bool safe;
@@ -335,7 +335,7 @@ public class GridGenerate : MonoBehaviour
         return true;
     }
 
-    bool fitWordDiagonal(string word, ref bool diaDown, bool backwards, ref Vector2Int startPos)
+    bool FitWordDiagonal(string word, ref bool diaDown, bool backwards, ref Vector2Int startPos)
     {
         int startRange = gridSize - word.Length;
         int dirCount = 0;
